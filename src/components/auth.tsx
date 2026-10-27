@@ -56,7 +56,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       .then((s) => {
         if (cancelled) return;
         setVerified(s.verified);
-        setSetupRequired(!s.passwordRequired);
+        setSetupRequired(!s.authDisabled && !s.passwordRequired);
         setVersion(s.version);
         setChecked(true);
       })

@@ -125,6 +125,8 @@ export interface BangumiCalendarResponse {
 }
 
 export interface AuthStatusResponse {
+  /** Explicit private-network mode; older servers omit this field. */
+  authDisabled?: boolean;
   /** 服务器是否配置了 PASSWORD */
   passwordRequired: boolean;
   /** 当前会话是否已验证 */

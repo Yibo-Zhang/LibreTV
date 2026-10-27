@@ -1,5 +1,10 @@
 # LibreTV
 
+This deployment fork adds `AUTH_DISABLED=true` for instances reached only through
+a private network such as Tailscale. In that mode, clients can use the UI and APIs
+without PASSWORD or session cookies. Omitting the flag keeps upstream password
+authentication unchanged; clearing PASSWORD alone does not disable login.
+
 LibreTV Next.js 迁移版：免费在线视频聚合搜索与观看平台。基于 Next.js 15（App Router）+ TypeScript + Tailwind CSS，播放内核为 ArtPlayer + hls.js，支持亮暗双主题。
 
 > 🏠 **官网**：[LibreTV 官网](https://libretv.is-an.org/)

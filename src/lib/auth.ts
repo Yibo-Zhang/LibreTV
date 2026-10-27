@@ -20,6 +20,15 @@ export function isPasswordConfigured(): boolean {
   return getPassword().length > 0;
 }
 
+/** Explicit opt-in for instances whose access is controlled by a private network. */
+export function isAuthDisabled(): boolean {
+  return process.env.AUTH_DISABLED === 'true';
+}
+
+export function isAuthenticated(cookieHeader: string | null): boolean {
+  return isAuthDisabled() || sessionFromCookieHeader(cookieHeader);
+}
+
 function getSecret(): string {
   if (process.env.PROXY_SECRET) return process.env.PROXY_SECRET;
   return crypto.createHash('sha256').update(getPassword() + ':libretv::session-salt').digest('hex');
